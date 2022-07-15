@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--
+
+Optional tracking code snippet. 
+    
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+var 
+obj = {
+        naushad: {
+            name: "Naushad",
+            Designation: "Sales & Marketing",
+            email : "naushad@gmail.com",
+            phone : "9100000",
+            linkdin : "https://www.linkedin.com/",
+            title: "Naushad Contact Card",
+            text: "Sharing Naushad Contact",
+            url: "https://qr.amzoneinternational.com/naushad/"
+        }
+};
+        
+$(document).ready(function(){
+var uri = window.location.href;
+var parts = uri.split('/');
+//var s = parts.split('.');
+var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
+var name = lastSegment.split(".")[0];
+console.log(name);
+
+//var prop = name;
+//var pp = 'name';    
+// Accessing property value
+var name2 = obj[name].name;
+var pos = obj[name].Designation;
+var email = obj[name].email;
+var emailatt = "location.href='mailto:"+email+"'";
+var phone = "+"+obj[name].phone;
+var phonelink = "location.href='tel:+"+phone+"'";
+var linkdinurl = obj[name].linkdin;
+var linkdin ="location.href='"+linkdinurl+"'";
+console.log(linkdin);
+//function
+    $('.name').html(name2);
+    $('.position').html(pos);
+    $('title').html(name2);
+    $('.email-a').html(email);
+    $('#email-ref').attr("onclick",emailatt);
+    $('#phone').attr("onclick",phonelink);
+    $('.phone').html(phone);
+    $('#linkdin').attr("onclick",linkdin);
+    $('.linkdin').html(linkdinurl);
+
+    
+const share = e => {
+  if (navigator.share) {
+    navigator
+      .share({
+        title: obj[name].title,
+        text: obj[name].text,
+        url: obj[name].url
+      })
+      .then(() => console.log("Thank you for share"))
+      .catch(error => console.log("error", error));
+  }
+};
+
+document.getElementById("share").addEventListener("click", share);
+    
+});
+
+
+
+</script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="mobile-web-app-capable" content="yes">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+
+<script src="/fontawsome.js"></script>
+
+<style type="text/css">
+          body {
+    font-family: Helvetica,Arial,sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+}
+#fullscreen {
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  position: fixed;
+  z-index: -999;
+  opacity: 0.8;
+}
+#avatar {
+    height: 180px;
+    border-radius: 100%;
+    border: 3px solid white;
+    margin-bottom: 40px;
+}
+h1 {
+    color: white;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    font-size: 4em;
+    font-family: Helvetica;
+    margin: -10px 0;
+}
+h3 {
+    color: white;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+.content {
+    padding-top: 100px;
+    padding-bottom: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+li {
+    border-radius: 100%;
+    /*border: 2px transparent;*/
+    color: white;
+    margin: 8px;
+    display: inline-block;
+    list-style: none;
+    width: 65px;
+    height: 65px;
+}
+li:hover {
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    transition: 500ms;
+    text-decoration: none;
+}
+a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+.description {
+    display: none;
+}
+#container {
+    display: flex; /* establish flex container */
+        flex-direction: row; /* make main axis horizontal (default value) */
+        justify-content: center; /* center items horizontally, in this case */
+        align-items: center; /* center items vertically, in this case */
+    /*height: 300px; /* for demo purposes */
+    /*border: 1px solid white; /* for demo purposes */
+    /*background-color: #eee; /* for demo purposes */
+}
+
+@media (max-width: 1900px) {
+ul {
+    text-align: center;
+}
+li {
+    border-radius: 0%;
+    border: none;
+    color: white;
+    margin: 8px;
+    display: block;
+    list-style: none;
+    margin: 10px 0px;
+    text-align: center;
+    height: auto;
+    width: auto;
+}
+li:hover {
+    background-color: none;
+    transition: none;
+}
+a {
+    text-align: center;
+    background-color:navy;
+    /*border-radius: 5px;
+    padding-left: 30px;
+        padding: 15px;
+    */
+    color: white;
+    width: 88%;
+}
+a:hover {
+    -webkit-transition: 500ms;
+    -moz-transition: 500ms;
+    transition: 500ms;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+}
+.description {
+    display: inline-block;
+    color: white;
+    font-family: Helvetica;
+    
+    font-weight: normal;
+}
+.content {
+    padding-top: 60px;
+}
+}
+
+.save {
+    border-radius: 0%;
+    border: none;
+    color: white;
+    display: block;
+    list-style: none;
+    text-align: center;
+    height: auto;
+    width: auto;
+}
+.tfont{
+  font-size: 18px; 
+  /*font-weight: bold;  */
+}
+
+.ver{
+        display: table-cell;
+        width: 250px;
+        padding: 10px;
+        vertical-align: middle;
+      }
+.flex-home{
+   display:flex;
+    margin-bottom: 10px;
+    align-items: flex-start;padding-left:20px;
+    width: 100%;
+    height: 100%; 
+}  
+.flex-end{
+   display:flex;
+    margin-bottom: 10px;
+    align-items: flex-end;
+    padding-left:20px;
+    width: 100%;
+    height: 100%; 
+} 
+
+        </style>
+    </head>
+    <body>
+        <center><img src="/logo.png" id="" style="width:24%;padding-top:10px;" /></center> 
+          <div style="float: right;margin-right:10px;margin-top:-40px;">    
+          <button id="share" style="
+          flex-shrink: 0;-webkit-box-pack: center;justify-content: center;-webkit-box-align: center;align-items: center;
+          color: rgb(17, 24, 33);width: 42px;height: 42px;background-color: rgb(255, 255, 255);
+           border: 1px solid rgb(215, 220, 225);border-radius: 12px;margin-left: auto;cursor: pointer;">
+              <svg width="15" height="20" viewBox="0 0 15 20" enable-background="new 0 0 24 24" class="sc-gKsewC eGzrup"><path d="M15.0006 9.37454V16.8749C14.9999 17.7035 14.6704 18.4979 14.0845 19.0838C13.4986 19.6697 12.7041 19.9992 11.8755 20H3.12513C2.29653 19.9992 1.50209 19.6697 0.916175 19.0838C0.330264 18.4979 0.000764569 17.7035 0 16.8749V9.37454C0.000764569 8.54594 0.330264 7.7515 0.916175 7.16558C1.50209 6.57967 2.29653 6.25017 3.12513 6.24941H5.00021C5.16598 6.24941 5.32496 6.31526 5.44217 6.43248C5.55939 6.54969 5.62524 6.70867 5.62524 6.87444C5.62524 7.0402 5.55939 7.19918 5.44217 7.3164C5.32496 7.43361 5.16598 7.49946 5.00021 7.49946H3.12513C2.628 7.50001 2.15138 7.69773 1.79985 8.04926C1.44832 8.40079 1.2506 8.87741 1.25005 9.37454V16.8749C1.2506 17.372 1.44832 17.8486 1.79985 18.2001C2.15138 18.5517 2.628 18.7494 3.12513 18.7499H11.8755C12.3726 18.7494 12.8493 18.5517 13.2008 18.2001C13.5523 17.8486 13.75 17.372 13.7506 16.8749V9.37454C13.75 8.87741 13.5523 8.40079 13.2008 8.04926C12.8493 7.69773 12.3726 7.50001 11.8755 7.49946H10.0004C9.83466 7.49946 9.67568 7.43361 9.55847 7.3164C9.44125 7.19918 9.3754 7.0402 9.3754 6.87444C9.3754 6.70867 9.44125 6.54969 9.55847 6.43248C9.67568 6.31526 9.83466 6.24941 10.0004 6.24941H11.8755C12.7041 6.25017 13.4986 6.57967 14.0845 7.16558C14.6704 7.7515 14.9999 8.54594 15.0006 9.37454V9.37454ZM4.19208 4.81625L6.87529 2.13298V12.4997C6.87529 12.6654 6.94115 12.8244 7.05836 12.9416C7.17558 13.0589 7.33455 13.1247 7.50032 13.1247C7.66609 13.1247 7.82507 13.0589 7.94228 12.9416C8.0595 12.8244 8.12535 12.6654 8.12535 12.4997V2.13298L10.8086 4.81621C10.8662 4.87591 10.9352 4.92352 11.0114 4.95628C11.0877 4.98904 11.1697 5.00628 11.2527 5.007C11.3357 5.00772 11.418 4.99191 11.4948 4.96048C11.5716 4.92905 11.6414 4.88264 11.7001 4.82396C11.7588 4.76527 11.8052 4.69549 11.8366 4.61867C11.868 4.54186 11.8839 4.45956 11.8831 4.37657C11.8824 4.29358 11.8652 4.21156 11.8324 4.1353C11.7997 4.05905 11.752 3.99008 11.6924 3.93242L7.943 0.183011C7.82548 0.0658139 7.66629 0 7.50032 0C7.33435 0 7.17516 0.0658139 7.05764 0.183011L3.30824 3.93241C3.19439 4.05029 3.13139 4.20817 3.13281 4.37205C3.13424 4.53593 3.19997 4.6927 3.31586 4.80858C3.43174 4.92447 3.58851 4.9902 3.75239 4.99163C3.91627 4.99305 4.07415 4.93005 4.19203 4.8162L4.19208 4.81625Z" fill="currentColor"></path></svg>
+          </button>
+          </div>
+
+
+
+          <div class="content">
+        
+    <img src="" id="fullscreen" style="background-color:#fafafa;">
+    
+
+    
+        <img src="img.jpg" id="avatar" style="box-shadow: 5px 5px 50px 5px grey;">
+    
+
+    <h1 style="font-weight: 700;font-size: 16px;line-height: 1.5;color:#0d5c91;" class="name"></h1>
+    <h3 style="font-weight: 700;line-height: 1.5;font-size: 16px;color:#0d5c91;" class="position">Sales & Marketing</h3>
+</div>
+<div id="container">
+    <!--img src="square-phone-solid.svg" style="width:20%;" />
+            <span class="description flex-center">Phone</span-->
+<style>
+.radius{
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+.radiusview{
+border-radius:10px 10px;
+}
+.colorm{
+    background-color:#0d5c91 !important;
+}
+.persoanllclass{
+    background-color:white !important;
+    color:#0d5c91 !important;
+    
+}
+.personal-border{
+
+    border: 1px solid #0d5c91;
+}
+</style>
+</div>
+   <div class="Downloadscontainer">         
+        <ul>
+              
+        <li>
+          <a class="fas fa-2x radiusview colorm" href="#" style="background-color:#0d5c91;padding-top:5px;border-bottom:0px;" id="personal">
+              <!-- tel:+971507697869 img src="square-phone-solid.svg" style="width:20%;" /-->
+            <span class="description flex-center tfont" id="personal2">Contact Details</span>
+            <div class="" style="margin-left:350px;display:flex;margin-top:-20px;">
+                <svg viewBox="0 0 19 18" width="19" height="18" enable-background="new 0 0 24 24" class="sc-gKsewC guoOTK">
+                    <path fill="#fff" d="M8.006 11c.266 0 .486-.106.695-.323l4.061-4.21A.807.807 0 0013 5.87a.855.855 0 00-.846-.87.856.856 0 00-.626.276L8.006 8.957 4.477 5.276A.87.87 0 003.852 5 .86.86 0 003 5.869c0 .235.087.428.243.599l4.062 4.215c.214.217.434.317.7.317z">
+                    </path>
+                </svg>
+            </div>
+          </a>
+                    <ul>
+                        
+              <!-- tel:+971507697869 img src="square-phone-solid.svg" style="width:20%;" /-->
+                        <li style="margin:0 !important;padding-left:0px;padding-right:0px;">
+                            <a class="fab fa-2x description" style="font-size: 16px;background-color:white;border: 1px solid navy;color:black;line-height: 2.1;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
+                                <p style="font-weight: 600;font-size: 20px;    line-height: .6;" class="name"></p>
+                                <p style="font-weight: 400;font-size: 20px;line-height: .6;" class="position"></p>
+                                <div class="flex-home" id="email-ref">
+                                    <div style="margin-top: 8px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;">
+                                        <svg viewBox="0 0 21 20" width="21" height="20" enable-background="new 0 0 24 24" class="sc-gKsewC iOxHCO"><path fill="#0d5c91" d="M10.5 0C4.98 0 0.5 4.48 0.5 10C0.5 15.52 4.98 20 10.5 20H15.5V18H10.5C6.16 18 2.5 14.34 2.5 10C2.5 5.66 6.16 2 10.5 2C14.84 2 18.5 5.66 18.5 10V11.43C18.5 12.22 17.79 13 17 13C16.21 13 15.5 12.22 15.5 11.43V10C15.5 7.24 13.26 5 10.5 5C7.74 5 5.5 7.24 5.5 10C5.5 12.76 7.74 15 10.5 15C11.88 15 13.14 14.44 14.04 13.53C14.69 14.42 15.81 15 17 15C18.97 15 20.5 13.4 20.5 11.43V10C20.5 4.48 16.02 0 10.5 0ZM10.5 13C8.84 13 7.5 11.66 7.5 10C7.5 8.34 8.84 7 10.5 7C12.16 7 13.5 8.34 13.5 10C13.5 11.66 12.16 13 10.5 13Z" fill="currentColor"></path></svg>
+                                    </div>
+                                    <div style="margin-top: 2px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;" class="email-a">
+                                        shriya@amzoneinternational.com
+                                    </div>
+                                    
+                                    
+                                </div>
+                               <div class="flex-home" id="phone">
+                                     <div style="margin-top: 5px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;">
+                                        <svg viewBox="0 0 19 18" width="19" height="18" enable-background="new 0 0 24 24" class="sc-gKsewC guoOTK">
+                                            <path fill="#0d5c91" d="M13.372,1.781H6.628c-0.696,0-1.265,0.569-1.265,1.265v13.91c0,0.695,0.569,1.265,1.265,1.265h6.744c0.695,0,1.265-0.569,1.265-1.265V3.045C14.637,2.35,14.067,1.781,13.372,1.781 M13.794,16.955c0,0.228-0.194,0.421-0.422,0.421H6.628c-0.228,0-0.421-0.193-0.421-0.421v-0.843h7.587V16.955z M13.794,15.269H6.207V4.731h7.587V15.269z M13.794,3.888H6.207V3.045c0-0.228,0.194-0.421,0.421-0.421h6.744c0.228,0,0.422,0.194,0.422,0.421V3.888z"></path></svg>
+                                    </div>
+                                    <div style="margin-top: 2px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;" class="phone">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="flex-home" onclick="location.href='tel:+97165578626'">
+                                     <div style="margin-top: 5px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;">
+                                        <svg viewBox="0 0 19 18" width="19" height="18" enable-background="new 0 0 24 24" class="sc-gKsewC guoOTK"><path fill="#0d5c91" d="M4.12 7.79C5.56 10.62 7.88 12.93 10.71 14.38L12.91 12.18C13.18 11.91 13.58 11.82 13.93 11.94C15.05 12.31 16.26 12.51 17.5 12.51C18.05 12.51 18.5 12.96 18.5 13.51V17C18.5 17.55 18.05 18 17.5 18C8.11 18 0.5 10.39 0.5 1C0.5 0.45 0.95 0 1.5 0H5C5.55 0 6 0.45 6 1C6 2.25 6.2 3.45 6.57 4.57C6.68 4.92 6.6 5.31 6.32 5.59L4.12 7.79Z" fill="currentColor"></path></svg>
+                                    </div>
+                                    <div style="margin-top: 2px;margin-right: 12px;flex-shrink: 0;-webkit-box-pack: center;justify-content: center;width: 20px;height: 100%;">
+                                        +97165578626
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-home" style="text-align: justify;">
+                                    <div style="margin-top: 3px;" onclick="location.href='https://www.google.com/maps/dir/25.3238527,55.4803966/amzoneinternational.com+google+map/@25.3308782,55.4548448,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3e5f5f4d361ab75f:0x9d0af8e64d6ee248!2m2!1d55.4790989!2d25.3336418'">
+                                        <svg viewBox="0 0 15 20" width="15" height="20" enable-background="new 0 0 24 24" class="sc-gKsewC eGzrup"><path fill="#0d5c91" d="M7.5 0C3.63 0 0.5 3.13 0.5 7C0.5 12.25 7.5 20 7.5 20C7.5 20 14.5 12.25 14.5 7C14.5 3.13 11.37 0 7.5 0ZM7.5 9.5C6.12 9.5 5 8.38 5 7C5 5.62 6.12 4.5 7.5 4.5C8.88 4.5 10 5.62 10 7C10 8.38 8.88 9.5 7.5 9.5Z" fill="currentColor"></path></svg>
+                                    </div>
+                                    <div style="margin-left: 20px;">
+                                    Plot No. : M5 – 1 to 4,<br>
+                                    P.O.Box: 8068,<br>
+                                    Saif Zone, Sharjah UAE
+                                    </div>
+                                </div>
+          
+                                 <div class="flex-home" style="text-align: justify;" id="linkdin">
+                                    <div style="margin-top: 0px;">
+                                        <!-- LINKdin svg goes here-->                                    
+                                        <?xml version="1.0"?>
+                                        <svg class="icon icon-linkedin" xmlns="https://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 144 144">
+                                          <path class="background" fill="#0d5c91" d="M 10.625,0 C 4.7611628,0 0,4.647 0,10.375 l 0,123.25 C 0,139.359 4.7611628,144 10.625,144 l 122.71875,0 C 139.21759,144 144,139.36 144,133.625 l 0,-123.25 C 144.00001,4.647 139.21759,0 133.34375,0 L 10.625,0 z m 21.40625,19.8125 c 6.828,0 12.375,5.57525 12.375,12.40625 0,6.837 -5.547,12.375 -12.375,12.375 -6.846,0 -12.375,-5.538 -12.375,-12.375 0.001,-6.83 5.53,-12.40625 12.375,-12.40625 z m 65.0625,32.46875 c 21.62801,0 25.625,14.21675 25.625,32.71875 l 0,37.71875 -21.34375,0 0,-33.4375 c 0,-7.969 -0.17199,-18.21875 -11.125,-18.21875 -11.113,0 -12.8125,8.69325 -12.8125,17.65625 l 0,34 -21.34375,0 0,-68.71875 20.5,0 0,9.375 0.28125,0 C 79.727,57.972 86.70275,52.28125 97.09375,52.28125 z M 21.34375,54 l 21.375,0 0,68.71875 -21.375,0 0,-68.71875 z"/>
+                                          <path class="foreground" fill="white" d="m 21.350995,53.985 h 21.359 v 68.722 h -21.359 V 53.985 z m 10.684,-34.16 c 6.828,0 12.377,5.549 12.377,12.38 0,6.837 -5.549,12.386 -12.377,12.386 -6.846,0 -12.387,-5.549 -12.387,-12.386 10e-4,-6.83 5.542,-12.38 12.387,-12.38"/>
+                                          <path class="foreground" fill="white" d="m 56.106995,53.985 h 20.485 v 9.39 h 0.286 c 2.852,-5.403 9.818,-11.099 20.209,-11.099 21.628005,0 25.621005,14.234 25.621005,32.736 v 37.694 h -21.34401 v -33.42 c 0,-7.969 -0.14599,-18.22 -11.098995,-18.22 -11.113,0 -12.819,8.681 -12.819,17.644 v 33.996 h -21.34 V 53.985 z"/>
+                                        </svg>
+                                    </div>
+                                    <div style="margin-left:15px;" class="linkdin"></div>
+                                </div>
+          
+                                <span>
+
+
+                                </span>
+<button id="btn-save" onclick="location.href='card.vcf'" style="background-color:#0d5c91;color:white;padding-left:10px;padding-right:10px;padding-top:8px;padding-bottom:8px;border: 1px solid white;border-radius:10px 10px;">Save to contacts</button>                                
+                            </a>
+                        </li>
+                    </ul>
+        </li>
+
+                <script>
+                     $(".Downloadscontainer ul li ul").css("display", "none");
+                     $(".Downloadscontainer a").click(function (e) {
+                         e.preventDefault();
+                    
+                         //$(this).closest('li').children('ul').slideToggle(500);
+                         $(this).closest('li').children('ul').slideToggle(500);
+                        //$(this).toggleClass("open");
+                        $('html, body').animate({
+                          scrollTop: $(".Downloadscontainer").offset().top
+                        }, 1000)
+                        //$("#personal").removeClass("radiusview");
+                        $("#personal").toggleClass("radiusview");
+                        $("#personal").toggleClass("radius");
+                        $("#personal").toggleClass("persoanllclass");
+                        $("#personal").toggleClass("personal-border");
+                        $("#personal2").toggleClass("persoanllclass");
+                        
+                     });
+                     $("#btn-save").click(function(){
+                      //$(".Downloadscontainer ul li ul").css("display", "none");
+                      $("#personal").toggleClass("radiusview");
+                        $("#personal").toggleClass("radius");
+                    });
+                   
+                </script>
+        <li>
+          <!--a class="fab fa-2x" href="https://www.facebook.com/Amazon-International-293447317752642/" style="border: 1px solid navy;border-bottom:0px;color:black;"-->
+            <a class="fab fa-2x radiusview colorm" href="https://ae.linkedin.com/company/amzone/"  style="background-color:navy;padding-top:5px;border-bottom:0px;">
+            <span class="description tfont click">Linkedin</span>
+          </a>
+        </li>
+
+
+         <li>
+          <a class="fab fa-2x radiusview colorm" href="https://amzoneinternational.com/Catalogues/"  style="background-color:navy;padding-top:5px;border-bottom:0px;">
+            <span class="description tfont click">Catalogue</span>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="fas fa-2x radiusview colorm" href="https://amzoneinternational.com"  style="background-color:navy;padding-top:5px;border-bottom:0px;">
+            <span class="description tfont click">Website</span>
+          </a>
+        </li>
+        
+         <li>
+          <a class="far fa-2x radiusview colorm" href="https://www.youtube.com/channel/UCggc6jueo3p2qpEFsl7Us7A"  style="background-color:navy;padding-top:5px;border-bottom:0px;">
+            <span class="description tfont">YouTube</span>
+          </a>
+        </li>
+        
+    
+</ul>
+</div>
+
+          
+
+    </body>
+</html>
